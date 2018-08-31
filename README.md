@@ -4,4 +4,3 @@
 - Commentary on use case 2 is in 'Use Case 2.txt' file
 - Commentary on use case 3 is in 'Use Case 3.txt' file
 - Commentary on some design decisions and alternative condsideration is in 'Design Decisions & Alternatives.txt' file
-- I have not attempted the optional stretch goal due to time constraint
