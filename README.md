@@ -1,1 +1,7 @@
-# technical-task
+- customers.raml is the main file containing the API
+- examples folder contains example jsons used in customers.raml
+- Commentary on use case 1 is in '' file
+- Commentary on use case 2 is in '' file
+- Commentary on use case 3 is in '' file
+- Commentary on some design decisions and alternative condsideration is in '' file
+- I have not attempted the optional stretch goal due to time constraint
