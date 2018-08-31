@@ -1,7 +1,7 @@
 - customers.raml is the main file containing the API
 - examples folder contains example jsons used in customers.raml
-- Commentary on use case 1 is in '' file
-- Commentary on use case 2 is in '' file
-- Commentary on use case 3 is in '' file
-- Commentary on some design decisions and alternative condsideration is in '' file
+- Commentary on use case 1 is in 'Use Case 1.txt' file
+- Commentary on use case 2 is in 'Use Case 2.txt' file
+- Commentary on use case 3 is in 'Use Case 3.txt' file
+- Commentary on some design decisions and alternative condsideration is in 'Design Decisions & Alternatives.txt' file
 - I have not attempted the optional stretch goal due to time constraint
