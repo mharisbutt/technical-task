@@ -1,0 +1,13 @@
+> Use Case 1:
+
+The consumer is consuming the API after every 5 minutes. This means there will be increased workload on the web server.
+We can use caching to reduce the workload on server. The problem is that data is not static and may have been updated
+by a consumer of the API.
+
+That is why I have not used time based caching. Insted I have used 'ETag' in response header and 'If-None-Match' in the
+request header. Client will send the ETag of the resource list in 'If-None-Match' to server. If it matches the 'ETag' of
+the resourceevery list on server, server will respond with 304 with no body. So the overhead of sending all the data again 
+and again after 5 minutes, even though it was not modified, would be fixed. If there is an update in the resource list at
+the server, a new 'ETag' will be generated at Server and will be sent in the response header along with 200 Https status code 
+and all the data in the body.
+

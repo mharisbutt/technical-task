@@ -1,0 +1,142 @@
+#%RAML 1.0
+title: Customers Resource
+version: v1
+baseUri: https://mocksvc.mulesoft.com/mocks/c60c1e7c-46b7-4a31-9526-3158806e7b25/customers/{version} # baseUri: http://api.myapi.com/customers/{version}
+mediaType: application/json
+securedBy: basicAuth
+securitySchemes:
+  basicAuth:
+    type: Basic Authentication
+    describedBy:
+      headers:
+        Authorization:
+          description: |
+            "Used to send the Base64 encoded 'username:password' credentials"
+          type: string
+      responses:
+        401:
+          description: |
+            Unauthorized. Either the provided username or password 
+            is invalid, or the user is not authorised to access this API.
+
+types:
+  Customer:
+    properties:
+      firstName: string
+      lastName: string
+      address: string
+  Error:
+    properties: 
+      code: integer
+      message: string
+  ResourceId:
+    properties: 
+      id: integer
+
+/customers:
+  get:
+    description: List all customers
+    headers:
+      If-None-Match?: string
+    queryParameters: 
+      firstName?: string
+      lastName?: string
+      offset?: integer
+      limit?: integer
+    responses: 
+      200:
+        headers: 
+          ETag: string
+          X-Total-Count: integer
+        body:
+          application/json:
+            type: array
+            items: 
+              type: [Customer, ResourceId]
+            example: !include customers.json            
+      304:
+      400:
+        body: 
+          application/json:
+            type: Error
+            example: !include error.json
+  post:
+    description: Create a new customer
+    body:
+      application/json:
+        type: Customer
+        example: !include create-customer.json
+    responses: 
+      201:
+        body:
+          application/json:
+            type: [Customer, ResourceId]
+            example: !include customer.json
+      400:
+        body:
+          application/json:
+            type: Error
+            example: !include error.json
+  /{id}:
+    get:
+      description: Get a customer by id
+      responses: 
+        200:
+          headers: 
+             Connection:
+              type: string
+              example: Keep-Alive
+          body:
+            application/json:
+              type: [Customer, ResourceId]
+              example: !include customer.json
+        404:
+          body:
+            application/json:
+              type: Error
+              example: !include error.json
+    put:
+      description: Update a customer by id
+      body:
+        application/json:
+          type: [Customer, ResourceId]
+          example: !include customer.json
+      responses: 
+        200:
+          body:
+            application/json:
+              type: [Customer, ResourceId]
+              example: !include customer.json
+        400:
+          body:
+            application/json:
+              type: Error
+              example: !include error.json
+        404:
+          body:
+            application/json:
+              type: Error
+              example: !include error.json
+    delete:
+      description: Deletes a customer by id
+      responses: 
+        204:
+        404:
+          body:
+            application/json:
+              type: Error
+              example: !include error.json
+    /orders:
+      get:
+      post:
+      /{id}:
+        get:
+        put:
+        delete:
+        /products:
+          get:
+          post:
+          /{id}:
+            get:
+            put:
+            delete:

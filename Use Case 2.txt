@@ -1,0 +1,17 @@
+> Use Case 2:
+
+The mobile application will retrieve the customer details and updates it. The point of focus is the efficient use 
+of network in this use case. 
+
+Normally a new TCP connection is made for every single request/response pair. It contributes in the increased latency and
+network congestion. We know that the mobile user is retrieving and the updating the detail of customer. We can use the
+idea of HTTP persistent connection, also called HTTP keep-alive. What it does is that it uses a single TCP connection to
+send and receive multiple HTTP requests/responses. In our case, when mobile application will retrieve the data using get
+method, it won't need to make a new TCP connection for the next update call using put. 
+
+For that, I have added 'Connection: keep-alive' in the response header of get/{id}. 
+
+NOTE: It is very important to add 'timeout' and 'max' parameters for keep-alive in the response header.
+Otherwise the resources needed to keep the connection open on the server will be unavailable for other clients.
+I have not added it in the customers.raml but it can easily me added once the parameters are finalised. 
+

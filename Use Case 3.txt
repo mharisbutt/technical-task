@@ -1,0 +1,13 @@
+> Use Case 3:
+
+There is a design choice we have to make while extending the API to support future resources e.g. orders and products.
+That is whether we want flat URIs for our resources or hierarchical URIs. 
+
+I have opted for the hihierarchical URIs and my APIs would look like /cutomers/{id}/orders, /customers/{id}/orders/{id}/products.
+
+My assumption is that a customer will have orders and orders will have products. We can access a particular order or all orders
+that belongs to a particular customer. Similarly we can access a particular product ot all products that belongs to a particular 
+order of a particular customer.
+
+If our API is to be consumed in such a way that it provides access to all of the orders and all of the products irrespective of customers, 
+then we can consider flat URIs and then introduce filters. For example, /orders/?customer=Steve.

@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1, 
+    "firstName": "Steven", 
+    "lastName": "Smith", 
+    "address": "4 Church St, Gladesville"
+  },
+  {
+    "id": 2, 
+    "firstName": "Michael", 
+    "lastName": "Clarke", 
+    "address": "10 Station St, West Ryde"
+  }
+]
